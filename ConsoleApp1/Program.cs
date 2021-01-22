@@ -1,5 +1,11 @@
 ﻿using SpaUserControl.Domain.Models;
 using System;
+using SpaUserControl.Domain.Contracts.Repositories;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SpaUserControl.Infraestructure.Repositories;
 
 namespace ConsoleApp1
 {
@@ -7,25 +13,22 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var user = new User("Allan", "allanstefanin@gmail.com");
+            var user = new User("Allan", "allan.stefanin@gmail.com");
 
-            try
+            user.SetPassword("allanse", "allanse");
+            user.Validate();
+
+            Console.WriteLine(user.Id);
+
+            using (IUserRepository userRep = new UserRepository())
             {
-                user.SetPassword("allanse", "allanse");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
+                userRep.Create(user);
             }
 
-            Console.WriteLine(user.Name);
-            Console.WriteLine(user.Password);
-
-            var password  = user.ResetPassword();
-            Console.WriteLine(password);
-            Console.WriteLine(user.Password);
+            Console.WriteLine(user.Id);
 
             Console.ReadKey();
+
         }
     }
 }
