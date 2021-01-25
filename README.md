@@ -47,3 +47,24 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 - Criação do projeto Startup e instalação do Unity nesse projeto.
 - Criação da classe DependencyResolver;
 - Implementação da classe e set das referencias para os projetos com dependencia (Infra e Domain);
+
+
+
+## Aula 4
+
+- Business;
+
+- Criação da interface IUserService (SpaUserControl.Domain.Contracts.Services);
+
+- Implementação da interface;
+
+  - Nesse item foi necessário pegar o fonte no github do projeto disponibilizado pelo Balta e copiar os dados;
+
+- Criação do projeto Business;
+
+- Criação da classe UserService;
+
+- Implementação da classe UserService;
+
+  
+
