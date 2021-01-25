@@ -37,3 +37,13 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 - Preparação do Console Application para testar o repositorio - Instalção do Entity e adição da connection string;
 - Criação do BD usando o Migrations;
 - Validação das implementações usando o ConsoleApp;
+
+
+
+## Aula 3
+
+- Explicação sobre injeção de dependencia;
+- Alteração na UserRepository para exigir um contexto quando instanciarem a classe;
+- Criação do projeto Startup e instalação do Unity nesse projeto.
+- Criação da classe DependencyResolver;
+- Implementação da classe e set das referencias para os projetos com dependencia (Infra e Domain);
