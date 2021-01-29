@@ -69,3 +69,21 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
   - Adicionei uma ViewModel uma View um  Controller;
 - Analisar as diferenças no commit para ver os pontos alterados.
 
+
+
+## Aula 6
+
+- Usando Web Api com OWIN;
+- Criação de um novo projeto do tipo Web Application selecionando template Empty;
+- Instalação dos seguintes pacotes via PMC: 
+  - Microsoft.AspNet.WebApi.Owin;
+  - Microsoft.Owin.Host.SystemWeb;
+  - Microsoft.Owin.Security.OAuth;
+  - Microsoft.Owin.Cors.
+- Criação da classe Startup e dos métodos Configuration e ConfigureWebApi;
+- Instalação do pacote Unity no projeto API via PMC para resolver as dependencias;
+- Implementação da resolução de dependencia na classe Startup;
+- 
+
+
+
