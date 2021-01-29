@@ -53,18 +53,19 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 ## Aula 4
 
 - Business;
-
 - Criação da interface IUserService (SpaUserControl.Domain.Contracts.Services);
-
 - Implementação da interface;
-
   - Nesse item foi necessário pegar o fonte no github do projeto disponibilizado pelo Balta e copiar os dados;
-
 - Criação do projeto Business;
-
 - Criação da classe UserService;
-
 - Implementação da classe UserService;
 
-  
+## Aula 5
+
+- Objetivo da aula é mostrar o uso da camada de serviço e explicar a resolução de dependencia em cada tipo de projeto (Console, MVC e API);
+- Primeiro foi demonstrado o uso com um projeto Console Application;
+- Depois com um projeto MVC;
+  - Para isso criei um projeto MVC;
+  - Adicionei uma ViewModel uma View um  Controller;
+- Analisar as diferenças no commit para ver os pontos alterados.
 

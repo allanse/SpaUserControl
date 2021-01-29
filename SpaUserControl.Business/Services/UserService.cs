@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
-using System.Threading.Tasks;
-using SpaUserControl.Common.Resources;
+﻿using SpaUserControl.Common.Resources;
 using SpaUserControl.Common.Validation;
 using SpaUserControl.Domain.Contracts.Repositories;
 using SpaUserControl.Domain.Contracts.Services;
 using SpaUserControl.Domain.Models;
+using System;
 
 namespace SpaUserControl.Business.Services
 {
@@ -63,7 +58,8 @@ namespace SpaUserControl.Business.Services
 
         public void Register(string name, string email, string password, string confirmPassword)
         {
-            var hasUser = GetByEmail(email);
+
+            var hasUser = _repository.Get(email);
             if (hasUser != null)
                 throw new Exception(Errors.DuplicateEmail);
 
