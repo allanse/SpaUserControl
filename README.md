@@ -74,16 +74,28 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 ## Aula 6
 
 - Usando Web Api com OWIN;
+
 - Criação de um novo projeto do tipo Web Application selecionando template Empty;
+
 - Instalação dos seguintes pacotes via PMC: 
+
   - Microsoft.AspNet.WebApi.Owin;
   - Microsoft.Owin.Host.SystemWeb;
   - Microsoft.Owin.Security.OAuth;
   - Microsoft.Owin.Cors.
+
 - Criação da classe Startup e dos métodos Configuration e ConfigureWebApi;
+
 - Instalação do pacote Unity no projeto API via PMC para resolver as dependencias;
+
 - Implementação da resolução de dependencia na classe Startup;
-- 
 
+  
 
+## Aula 7
+
+- Autenticação na API usando o OAUTH;
+- Criando o método ConfigureOAuth na classe Startup da Api;
+- Criação da pasta Security na API e também da classe AuthorizationServerProvider;
+- Validação do uso de token por meio de um controller de nome TestController;
 
