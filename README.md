@@ -99,3 +99,13 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 - Criação da pasta Security na API e também da classe AuthorizationServerProvider;
 - Validação do uso de token por meio de um controller de nome TestController;
 
+
+
+## Aula 8
+
+- Tema: Criação do controller que servirá de endpoint das tarefas do usuário;
+- Criação do controller AccountController;
+- Explicação e implementação dos atributos de rotas (RoutePrefix e Route);
+- Implementação das tasks (libera processamento no IIS): Register, ChangeInformation, ChangePassword e ResetPassword;
+- Uso do Postman para validação;
+- Uso do HttpResponseMessage para padronizar os retornos;
