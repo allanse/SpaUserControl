@@ -109,3 +109,13 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 - Implementação das tasks (libera processamento no IIS): Register, ChangeInformation, ChangePassword e ResetPassword;
 - Uso do Postman para validação;
 - Uso do HttpResponseMessage para padronizar os retornos;
+
+
+
+## Aula 9
+
+- Tema: Performance a padronização da API;
+- Dica: Evitar IF no Controller pois é regra de negócio e sendo assim o ideal é estar no serviço (Business);
+- Essa aula foi mais focada em explicar alguns itens que o Balta usa para melhorar a performance e na padronização da API sendo assim não houve um passo a passo com códigos. Dessa forma o que fiz foi pegar os fontes finais do projeto que o Balta usou e atualizar meu projeto com os mesmos para que ambos fiquem iguais.
+- Dentre os itens de performançe que ele passou esão o DeflateCompression e o sistema de Cache;
+- Para o cache funcionar é preciso instalar o pacote Strathweb.CacheOutput.WebApi2 no projeto API; 

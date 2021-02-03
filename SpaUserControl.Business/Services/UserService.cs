@@ -1,19 +1,22 @@
-﻿using SpaUserControl.Common.Resources;
-using SpaUserControl.Common.Validation;
+﻿using SpaUserControl.Common.Validation;
 using SpaUserControl.Domain.Contracts.Repositories;
 using SpaUserControl.Domain.Contracts.Services;
 using SpaUserControl.Domain.Models;
+using SpaUserControl.Resource.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace SpaUserControl.Business.Services
 {
     public class UserService : IUserService
     {
         private IUserRepository _repository;
+
         public UserService(IUserRepository repository)
         {
-            _repository = repository;
+            this._repository = repository;
         }
+
         public User Authenticate(string email, string password)
         {
             var user = GetByEmail(email);
@@ -43,22 +46,9 @@ namespace SpaUserControl.Business.Services
 
             _repository.Update(user);
         }
-
-        public User GetByEmail(string email)
-        {
-
-            var user = _repository.Get(email);
-
-            if (user == null)
-                throw new Exception(Errors.UserNotFound);
-
-            return user;
-
-        }
-
+        
         public void Register(string name, string email, string password, string confirmPassword)
         {
-
             var hasUser = _repository.Get(email);
             if (hasUser != null)
                 throw new Exception(Errors.DuplicateEmail);
@@ -70,6 +60,15 @@ namespace SpaUserControl.Business.Services
             _repository.Create(user);
         }
 
+        public User GetByEmail(string email)
+        {
+            var user = _repository.Get(email);
+            if (user == null)
+                throw new Exception(Errors.UserNotFound);
+
+            return user;
+        }
+
         public string ResetPassword(string email)
         {
             var user = GetByEmail(email);
@@ -78,6 +77,11 @@ namespace SpaUserControl.Business.Services
 
             _repository.Update(user);
             return password;
+        }
+
+        public List<User> GetByRange(int skip, int take)
+        {
+            return _repository.Get(skip, take);
         }
 
         public void Dispose()

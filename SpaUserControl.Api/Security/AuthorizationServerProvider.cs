@@ -1,11 +1,11 @@
 ﻿using Microsoft.Owin.Security.OAuth;
 using SpaUserControl.Domain.Contracts.Services;
+using SpaUserControl.Resource.Resources;
 using System;
 using System.Security.Claims;
 using System.Security.Principal;
 using System.Threading;
 using System.Threading.Tasks;
-using SpaUserControl.Common.Resources;
 
 namespace SpaUserControl.Api.Security
 {
@@ -47,7 +47,7 @@ namespace SpaUserControl.Api.Security
 
                 context.Validated(identity);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 context.SetError("invalid_grant", Errors.InvalidCredentials);
             }

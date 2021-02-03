@@ -1,33 +1,34 @@
-﻿using System;
+﻿using SpaUserControl.Api.Models.Account;
+using SpaUserControl.Domain.Contracts.Services;
+using SpaUserControl.Resource.Resources;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using SpaUserControl.Api.Models;
-using SpaUserControl.Domain.Contracts.Services;
 using System.Web.Http;
-using SpaUserControl.Common.Resources;
 
 namespace SpaUserControl.Api.Controllers
 {
-    [RoutePrefix("api/account")]
+    [RoutePrefix("api/users")]
     public class AccountController : ApiController
     {
         private IUserService _service;
 
         public AccountController(IUserService service)
         {
-            _service = service;
+            this._service = service;
         }
-        [Route("")]
+
         [HttpPost]
-        public Task<HttpResponseMessage> Register(RegisterUserModel model)
+        [Route("")]
+        public Task<HttpResponseMessage> Post(RegisterUserModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
             try
             {
                 _service.Register(model.Name, model.Email, model.Password, model.ConfirmPassword);
-                response = Request.CreateResponse(HttpStatusCode.OK, new {name = model.Name, email = model.Email});
+                response = Request.CreateResponse(HttpStatusCode.OK, new { name = model.Name, email = model.Email });
             }
             catch (Exception ex)
             {
@@ -42,7 +43,7 @@ namespace SpaUserControl.Api.Controllers
         [Authorize]
         [HttpPut]
         [Route("")]
-        public Task<HttpResponseMessage> ChangeInformation(ChangeInformationModel model)
+        public Task<HttpResponseMessage> Put(ChangeInformationModel model)
         {
             HttpResponseMessage response = new HttpResponseMessage();
 
@@ -103,6 +104,7 @@ namespace SpaUserControl.Api.Controllers
             tsc.SetResult(response);
             return tsc.Task;
         }
+
         protected override void Dispose(bool disposing)
         {
             _service.Dispose();

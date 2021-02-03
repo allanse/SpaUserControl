@@ -1,15 +1,15 @@
-﻿using System;
-using Owin;
-using System.Web.Http;
-using System.Web.Http.Dependencies;
-using System.Web.UI;
-using Microsoft.Owin;
+﻿using Microsoft.Owin;
 using Microsoft.Owin.Security.OAuth;
+using Microsoft.Practices.Unity;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
+using Owin;
 using SpaUserControl.Api.Helpers;
 using SpaUserControl.Api.Security;
 using SpaUserControl.Domain.Contracts.Services;
 using SpaUserControl.Startup;
-using Unity;
+using System;
+using System.Web.Http;
 
 namespace SpaUserControl.Api
 {
@@ -19,6 +19,7 @@ namespace SpaUserControl.Api
         {
             HttpConfiguration config = new HttpConfiguration();
 
+            // Configure Dependency Injection
             var container = new UnityContainer();
             DependencyResolver.Resolve(container);
             config.DependencyResolver = new UnityResolver(container);
@@ -32,31 +33,41 @@ namespace SpaUserControl.Api
 
         public static void ConfigureWebApi(HttpConfiguration config)
         {
+            // Remove o XML
+            var formatters = config.Formatters;
+            formatters.Remove(formatters.XmlFormatter);
+
+            // Modifica a identação
+            var jsonSettings = formatters.JsonFormatter.SerializerSettings;
+            jsonSettings.Formatting = Formatting.Indented;
+            jsonSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
+            // Modifica a serialização
+            formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+
+            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new {id = RouteParameter.Optional}
+                defaults: new { id = RouteParameter.Optional }
             );
         }
 
         public void ConfigureOAuth(IAppBuilder app, IUserService service)
         {
-            OAuthAuthorizationServerOptions oAuthServerOptions = new OAuthAuthorizationServerOptions()
+            OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
                 TokenEndpointPath = new PathString("/api/security/token"),
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),
                 Provider = new AuthorizationServerProvider(service)
-
             };
 
-            //Token generation
-            app.UseOAuthAuthorizationServer(oAuthServerOptions);
+            // Token Generation
+            app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-
         }
     }
 }

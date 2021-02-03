@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SpaUserControl.Domain.Models;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity.Infrastructure.Annotations;
-using SpaUserControl.Domain.Models;
 using System.Data.Entity.ModelConfiguration;
 
 namespace SpaUserControl.Infraestructure.Data.Map
@@ -20,14 +20,14 @@ namespace SpaUserControl.Infraestructure.Data.Map
 
             Property(x => x.Email)
                 .HasMaxLength(160)
-                .HasColumnAnnotation(IndexAnnotation.AnnotationName,
-                    new IndexAnnotation(new IndexAttribute("IX_EMAIL", 1) {IsUnique = true}))
+                .HasColumnAnnotation(
+                    IndexAnnotation.AnnotationName,
+                    new IndexAnnotation(new IndexAttribute("IX_EMAIL", 1) { IsUnique = true }))
                 .IsRequired();
 
             Property(x => x.Password)
                 .HasMaxLength(32)
                 .IsFixedLength();
-
         }
     }
 }

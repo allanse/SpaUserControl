@@ -1,17 +1,17 @@
 ﻿using SpaUserControl.Domain.Models;
-using System.Data.Entity;
 using SpaUserControl.Infraestructure.Data.Map;
+using System.Data.Entity;
 
 namespace SpaUserControl.Infraestructure.Data
 {
     public class AppDataContext : DbContext
     {
-        public AppDataContext()
-            :base("name=AppConnectionString")
+        public AppDataContext() : base("AppConnectionString")
         {
-            Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
+            Configuration.LazyLoadingEnabled = false;
         }
+
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
