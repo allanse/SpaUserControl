@@ -119,3 +119,10 @@ Hands ON do curso do Balta de Back Ends robustos no Youtube
 - Essa aula foi mais focada em explicar alguns itens que o Balta usa para melhorar a performance e na padronização da API sendo assim não houve um passo a passo com códigos. Dessa forma o que fiz foi pegar os fontes finais do projeto que o Balta usou e atualizar meu projeto com os mesmos para que ambos fiquem iguais.
 - Dentre os itens de performançe que ele passou esão o DeflateCompression e o sistema de Cache;
 - Para o cache funcionar é preciso instalar o pacote Strathweb.CacheOutput.WebApi2 no projeto API; 
+
+
+
+## Aula 10
+
+- Tema: Como publicar o projeto;
+- Foram explicadas 3 formas de publicar no Azure: Website, Cloud Service ou VM;
